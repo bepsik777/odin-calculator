@@ -46,6 +46,7 @@
     width: 110px;
     display: block;
     padding: 0;
+    background-color: black;
 }
 
 .button-container {
