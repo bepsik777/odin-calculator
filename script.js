@@ -75,22 +75,23 @@ digits.forEach((digit) => {
 			}
 		}
 		display.textContent += digit.textContent;		//  ADD THE NUMBERS ON BUTTONS TO THE DISPLAY
-		displayValue[0] = display.textContent;			//  PUSH THE ACTUAL CONTENT TO A DISPLAY VALUE ARRAY
+		displayValue[0] = display.textContent;			//  PUSH THE DISPLAY CONTENT TO A DISPLAY VALUE ARRAY
 	})
 })
 
 
 operators.forEach((operator) => {
 	operator.addEventListener('click', () => {
+		if (display.textContent === '') {
+			return;
+		}
 		operation.push(displayValue[0]);			//PUSH THE ACTUAL VALUE TO OPERATION
 		display.textContent = operator.textContent			// ADD OPERATOR TO DISPLAY CONTENT
 		logAll();
 		//
 		if(operation.length === 3) {
 			operationToNumber()
-			console.log(operation)
 			result = operate(operation[1], operation[0], operation[2]);
-			console.log(result)
 			displayValue = [];		// RESET THE DISPLAY VALUE
 			displayValue.push(result);  
 			operation = [];
@@ -102,6 +103,9 @@ operators.forEach((operator) => {
 
 
 equalButton.addEventListener('click', () => {
+	// if(operation[2] === 0 && operation[1] === "/") {
+	// 	display.textContent = 'you kidding me?'
+	// }
 	operation.push(displayValue[0]);  
 	operationToNumber();
 	 result = operate(operation[1], operation[0], operation[2])
@@ -109,9 +113,4 @@ equalButton.addEventListener('click', () => {
 	 displayValue = [];		// RESET THE DISPLAY VALUE
 	 displayValue.push(result);  
 	 operation = []
-	 //
-		console.log(displayValue)
-		console.log(operation)
-		console.log(result)
-	 //
 })
