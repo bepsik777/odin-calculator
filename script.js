@@ -74,6 +74,9 @@ digits.forEach((digit) => {
 				display.textContent = ''
 			}
 		}
+		if(displayValue[0] === result) { 
+			clearDisplay();
+		}
 		display.textContent += digit.textContent;		//  ADD THE NUMBERS ON BUTTONS TO THE DISPLAY
 		displayValue[0] = display.textContent;			//  PUSH THE DISPLAY CONTENT TO A DISPLAY VALUE ARRAY
 	})
@@ -103,14 +106,23 @@ operators.forEach((operator) => {
 
 
 equalButton.addEventListener('click', () => {
-	// if(operation[2] === 0 && operation[1] === "/") {
-	// 	display.textContent = 'you kidding me?'
-	// }
 	operation.push(displayValue[0]);  
 	operationToNumber();
+	if(operation[2] === 0 && operation[1] === "/") {
+		result = 'L0L';
+		display.textContent = result;
+		displayValue[0] = result;
+		operation = []
+		return result;
+	}
 	 result = operate(operation[1], operation[0], operation[2])
 	 display.textContent = result;  //SHOW THE RESULT ON THE DISPLAY
 	 displayValue = [];		// RESET THE DISPLAY VALUE
 	 displayValue.push(result);  
 	 operation = []
 })
+
+
+// Problems to fix:
+// * show the result of the previous calculation in a separate div
+//
