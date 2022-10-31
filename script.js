@@ -51,12 +51,14 @@ function logAll() {
 }
 
 
+
 const display = document.querySelector('.display')
 const digits = document.querySelectorAll('.button.digit')
 const operators = document.querySelectorAll('.button.operator')
 const equalButton = document.querySelector('#equal')
 const clearButton = document.querySelector('#clear')
 const arrayOfOperators = ['+', '-', '*', '/']
+const decimal = document.querySelector('#decimal')
 let displayValue = []
 let operation = []
 let result
@@ -74,7 +76,7 @@ digits.forEach((digit) => {
 				display.textContent = ''
 			}
 		}
-		if(displayValue[0] === result) { 
+		if(displayValue[0] === result) {            //CREATE NEW OPERATION IF THE TEXT ON DISPLAY IS A RESULT OF PREVIOUS OPERATION
 			clearDisplay();
 		}
 		display.textContent += digit.textContent;		//  ADD THE NUMBERS ON BUTTONS TO THE DISPLAY
@@ -125,4 +127,4 @@ equalButton.addEventListener('click', () => {
 
 // Problems to fix:
 // * show the result of the previous calculation in a separate div
-//
+// * disable ability to put more then one decimal

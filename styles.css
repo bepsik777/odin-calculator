@@ -1,22 +1,28 @@
 * {
     margin: 0;
     box-sizing: content-box;
-    border: black 2px solid;
+    /* border: black 2px solid; */
     font-size: large;
+    font-family: 'Alfa Slab One', cursive;
 }
 
 .container {
     display: flex;
-    height: 100vh;
+    height: 95vh;
     justify-content: center;
     align-items: center;
+    background-color: #92a8d1;
 }
 
 .calculator {
     height: 700px;
-    width: 600px;
+    width: 500px;
     display: flex;
     flex-direction: column;
+    border: #E30B5C 10px solid;
+    border-radius: 10px;
+    background-color: white;
+
 }
 
 .display-container {
@@ -24,7 +30,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: indianred;
+    /* background-color: indianred; */
     
 }
 
@@ -35,20 +41,24 @@
     justify-content: end;
     align-items: center;
     font-size: 2.5em;
-    margin-left: 12px;
-    background-color: cyan;
+    margin-left: 6px;
+    background-color: lightgrey;
+    border: darkgray 3px solid;
+    border-radius: 5px;
     overflow-wrap: anywhere;
 }
 
 
-
 #clear {
-    height: 110px;
-    width: 110px;
+    height: 150px;
+    width: 50px;
+    margin-right: 20px;
     display: block;
     padding: 0;
-    background-color: black;
+    border: darkgray 3px solid;
+    border-radius: 5px;
 }
+
 
 .button-container {
     height: 500px;
@@ -57,7 +67,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    background-color: violet;
+    /* background-color: violet; */
 }
 
 .button {
@@ -67,4 +77,48 @@
     width: 90px;
     margin: 10px 1px;
     font-size: 2em;
+    border-radius: 80%;
+    border: none;
+    border: darkgray 3px solid;
+}
+
+.footer {
+   width: 100%;
+   height: 100%;
+   border: black 1px solid;
+   padding: 10px;
+   background-color: #E0115F;
+}
+
+.footer>p {
+   text-align: center;
+}
+
+.footer>p>a {
+    text-decoration: none;
+    color: #A9F5FF;
+}
+
+
+.display:hover {
+    background-color: #A9F5FF;
+}
+
+.button:hover {
+    background-color: #92a8d1;
+    border: gold 3px solid;
+}
+
+.button:active {
+    background-color:  #034f84;;
+}
+
+.button.operator:hover,
+#equal:hover,
+#clear:hover {
+    background-color: #702963;
+}
+
+#clear:hover {
+    border: gold 3px solid;
 }
