@@ -127,4 +127,6 @@ equalButton.addEventListener('click', () => {
 
 // Problems to fix:
 // * show the result of the previous calculation in a separate div
-// * disable ability to put more then one decimal
+// * disable ability to put more than one decimal
+// * add keyboard support
+// * add power on/off button
