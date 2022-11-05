@@ -33,6 +33,23 @@ function operationToNumber() {
 	}
 }
 
+function populateDisplay() {
+	// clear display first if there is an operator on it
+		for (let i = 0; i < arrayOfOperators.length; i++) {
+			if (display.textContent.includes(arrayOfOperators[i])) {  
+				operation.push(arrayOfOperators[i])
+				clearDisplay()
+			}
+		}
+		//clear display first if result is on it
+		if(displayValue[0] === result) {           
+			clearDisplay();
+		}
+		// add clicked button text to display text + push the display text content to the display value
+		display.textContent += this.textContent;		
+		displayValue[0] = display.textContent;			
+}
+
 function clearDisplay() {
 	display.textContent = ''
 }
@@ -69,20 +86,72 @@ let result
 clearButton.addEventListener('click', resetAll);
 
 digits.forEach((digit) => {
-	digit.addEventListener('click', () => { 			//	ADD AN EVENT LISTENET FUNCTION TO THE DIGITS	
-		for (let i = 0; i < arrayOfOperators.length; i++) {
-			if (display.textContent.includes(arrayOfOperators[i])) {  //CHECKS FOR OPERATOR ON DISPLAY AND RESET DISPLAY
-				operation.push(arrayOfOperators[i])
-				display.textContent = ''
-			}
-		}
-		if(displayValue[0] === result) {            //CREATE NEW OPERATION IF THE TEXT ON DISPLAY IS A RESULT OF PREVIOUS OPERATION
-			clearDisplay();
-		}
-		display.textContent += digit.textContent;		//  ADD THE NUMBERS ON BUTTONS TO THE DISPLAY
-		displayValue[0] = display.textContent;			//  PUSH THE DISPLAY CONTENT TO A DISPLAY VALUE ARRAY
-	})
+	digit.addEventListener('click', populateDisplay) 			
 })
+
+decimal.addEventListener('click', () => {
+	if (display.textContent.includes('.')) return;
+	display.textContent += decimal.textContent;		
+	displayValue[0] = display.textContent;	
+})
+
+
+
+			// próbuję wyłączyć możliwość dodawania przecinków gdy już jest jest. Ale ta funkcja zwraca 'undefined'. dlaczego?
+// decimal.addEventListener('click', () => {
+// 	if (display.textContent.includes('.')) return;
+// 	else {{
+// 		// clear display first if there is an operator on it
+// 			for (let i = 0; i < arrayOfOperators.length; i++) {
+// 				if (display.textContent.includes(arrayOfOperators[i])) {  
+// 					operation.push(arrayOfOperators[i])
+// 					clearDisplay()
+// 				}
+// 			}
+// 			//clear display girst if result is on it
+// 			if(displayValue[0] === result) {           
+// 				clearDisplay();
+// 			}
+// 			// add clicked button text to display text + push the display text content to the display value
+// 			display.textContent += this.textContent;		
+// 			displayValue[0] = display.textContent;			
+// 	}}
+// })
+
+
+
+
+// 		for (let i = 0; i < arrayOfOperators.length; i++) {
+// 			if (display.textContent.includes(arrayOfOperators[i])) {  //CHECKS FOR OPERATOR ON DISPLAY AND RESET DISPLAY
+// 				operation.push(arrayOfOperators[i])
+// 				display.textContent = ''
+// 			}
+// 		}
+// 		if(displayValue[0] === result) {            //CREATE NEW OPERATION IF THE TEXT ON DISPLAY IS A RESULT OF PREVIOUS OPERATION
+// 			clearDisplay();
+// 		}
+// 		display.textContent += digit.textContent;		//  ADD THE NUMBERS ON BUTTONS TO THE DISPLAY
+// 		displayValue[0] = display.textContent;			//  PUSH THE DISPLAY CONTENT TO A DISPLAY VALUE ARRAY
+// 	})
+// })
+
+// decimal.addEventListener('click', () => {
+// 	if (display.textContent.includes('.')) decimal.disabled = true
+// })
+// decimal.addEventListener('click', () => {
+// 	if (!display.textContent.includes('.')) decimal.disabled = false
+// })
+
+// decimal.addEventListener('click', (e) => {
+// 	if ( display.textContent.includes('.')) {
+// 		e.target.removeEventListener(e)
+// 	}
+// 	populateDisplay()
+// })
+
+
+
+
 
 
 operators.forEach((operator) => {
