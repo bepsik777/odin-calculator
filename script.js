@@ -26,7 +26,8 @@ function operate(operator, num1, num2) {
 	}
 }
 function operationToNumber() {
-	for (let i = 0; i < operation.length; i++) {  //THIS LOOP CHANGE THE OPERATION ITEMS FROM STRING TO NUMBERS
+	// this function change the operation elements from string to numbers, so the calculation can be made
+	for (let i = 0; i < operation.length; i++) {  
 		if (operation[i] !== '+' && operation[i] !== '-' && operation[i] !== '/' && operation[i] !== '*') {
 			operation[i] = Number(operation[i])
 		}
@@ -91,66 +92,9 @@ digits.forEach((digit) => {
 
 decimal.addEventListener('click', () => {
 	if (display.textContent.includes('.')) return;
-	display.textContent += decimal.textContent;		
-	displayValue[0] = display.textContent;	
+	populateDisplay.call(decimal);
+	
 })
-
-
-
-			// próbuję wyłączyć możliwość dodawania przecinków gdy już jest jest. Ale ta funkcja zwraca 'undefined'. dlaczego?
-// decimal.addEventListener('click', () => {
-// 	if (display.textContent.includes('.')) return;
-// 	else {{
-// 		// clear display first if there is an operator on it
-// 			for (let i = 0; i < arrayOfOperators.length; i++) {
-// 				if (display.textContent.includes(arrayOfOperators[i])) {  
-// 					operation.push(arrayOfOperators[i])
-// 					clearDisplay()
-// 				}
-// 			}
-// 			//clear display girst if result is on it
-// 			if(displayValue[0] === result) {           
-// 				clearDisplay();
-// 			}
-// 			// add clicked button text to display text + push the display text content to the display value
-// 			display.textContent += this.textContent;		
-// 			displayValue[0] = display.textContent;			
-// 	}}
-// })
-
-
-
-
-// 		for (let i = 0; i < arrayOfOperators.length; i++) {
-// 			if (display.textContent.includes(arrayOfOperators[i])) {  //CHECKS FOR OPERATOR ON DISPLAY AND RESET DISPLAY
-// 				operation.push(arrayOfOperators[i])
-// 				display.textContent = ''
-// 			}
-// 		}
-// 		if(displayValue[0] === result) {            //CREATE NEW OPERATION IF THE TEXT ON DISPLAY IS A RESULT OF PREVIOUS OPERATION
-// 			clearDisplay();
-// 		}
-// 		display.textContent += digit.textContent;		//  ADD THE NUMBERS ON BUTTONS TO THE DISPLAY
-// 		displayValue[0] = display.textContent;			//  PUSH THE DISPLAY CONTENT TO A DISPLAY VALUE ARRAY
-// 	})
-// })
-
-// decimal.addEventListener('click', () => {
-// 	if (display.textContent.includes('.')) decimal.disabled = true
-// })
-// decimal.addEventListener('click', () => {
-// 	if (!display.textContent.includes('.')) decimal.disabled = false
-// })
-
-// decimal.addEventListener('click', (e) => {
-// 	if ( display.textContent.includes('.')) {
-// 		e.target.removeEventListener(e)
-// 	}
-// 	populateDisplay()
-// })
-
-
-
 
 
 
@@ -196,6 +140,5 @@ equalButton.addEventListener('click', () => {
 
 // Problems to fix:
 // * show the result of the previous calculation in a separate div
-// * disable ability to put more than one decimal
 // * add keyboard support
 // * add power on/off button
